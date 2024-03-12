@@ -4,12 +4,9 @@ on: pull_request
 
 jobs:
   tests:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: prefix-dev/setup-pixi@v0.5.1
+      - uses: pre-commit/action@v3.0.0
       - run: pixi run test
